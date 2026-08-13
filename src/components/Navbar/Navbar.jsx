@@ -15,8 +15,8 @@ export default function Navbar() {
   const linkClass = ({ isActive }) =>
     `flex items-center gap-2 px-3 py-2 rounded-md font-medium transition-colors ${
       isActive
-        ? 'bg-forest-800 text-white'
-        : 'text-forest-100 hover:bg-forest-500/20 hover:text-white'
+        ? 'bg-green-800 text-white'
+        : 'text-green-100 hover:bg-green-500/20 hover:text-white'
     }`;
 
   return (
@@ -38,7 +38,7 @@ export default function Navbar() {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-md text-forest-100 hover:text-white hover:bg-forest-800 focus:outline-none"
+            className="p-2 rounded-md text-green-100 hover:text-white hover:bg-green-800 focus:outline-none"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -47,7 +47,7 @@ export default function Navbar() {
       
       {/* Mobile Navigation Panel */}
       {isOpen && (
-        <div className="md:hidden px-2 pt-2 pb-3 space-y-1 bg-forest-900 border-t border-forest-800">
+        <div className="md:hidden px-2 pt-2 pb-3 space-y-1 bg-green-900 border-t border-green-800">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
