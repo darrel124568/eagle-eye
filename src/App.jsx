@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import BirdDetails from './pages/BirdDetails/BirdDetails'
@@ -18,7 +17,7 @@ export default function App() {
       <Route path='/explore' element={<Explorer/>}/>
       <Route path='/bird' element={<BirdDetails/>}/>
       <Route path='/about' element={<About/>}/>
-      <Route path='/favourites' element={<Favourites/>}/>
+      <Route path='/favorites' element={<Favourites/>}/>
     </Routes>
     </BrowserRouter>
   )
