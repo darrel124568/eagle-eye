@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { birdContext } from "../../context/birdContext";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 const apiUrl = "https://ornithophile.vercel.app";
 
@@ -26,7 +27,13 @@ export default function BirdDetails() {
   }, [id]);
 
   if (error) {
-    return <><Navbar /><main className="p-6" role="alert">{error}</main></>;
+    return (
+      <><Navbar />
+      <main className="p-6" role="alert">
+        <ErrorMessage>{error}</ErrorMessage>
+      </main>
+      </>
+    )
   }
 
   if (!data) {

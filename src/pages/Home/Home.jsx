@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     setEndpoint(
-      `/api/birds?common_name=${encodeURIComponent("Abbott's babbler")}`
+      `/api/birds?common_name=${encodeURIComponent("Arctic Tern")}`
     )
   }, [])
 
