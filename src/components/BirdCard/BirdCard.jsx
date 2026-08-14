@@ -1,22 +1,33 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ImageOff } from 'lucide-react';
+import { birdContext } from '../../context/birdContext';
 
 export default function BirdCard({ bird }) {
   const [imgError, setImgError] = useState(false);
+  const { favorites, setFavorites } = useContext(birdContext);
 
   const fallbackImage = 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80';
 
-  function handleclick() {
-    const favorites = JSON.parse(
-    localStorage.getItem("favorites") || "[]"
-    );
+function handleClick() {
   if (!favorites.some(fav => fav.id === bird.id)) {
-  favorites.push({id:bird.id, name: bird.common_name});
+    const updatedFavorites = [
+      ...favorites,
+      {
+        id: bird.id,
+        name: bird.common_name
+      }
+    ];
 
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-  }
-  else {
+    setFavorites(updatedFavorites);
+
+    localStorage.setItem(
+      "favorites",
+      JSON.stringify(updatedFavorites)
+    );
+
+    alert(`${bird.common_name} has been added to your favorites!`);
+  } else {
     alert("This bird is already in your favorites.");
   }
 }
@@ -51,12 +62,26 @@ export default function BirdCard({ bird }) {
         >
           View Details
         </Link>
-        <button
-          onClick={handleclick}
+        {
+          favorites.some(fav => fav.id === bird.id) ? (
+            <button
+              className="mt-4 inline-block text-center w-full py-2 bg-gray-400 cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-colors"
+              disabled
+            >
+              Already in Favorites
+            </button>
+          ) :(
+            <button
+          onClick={handleClick}
           className="mt-4 inline-block text-center w-full py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-semibold rounded-lg transition-colors"
-        >
+          >
           Add to Favorites
-        </button>
+          </button>
+          )
+          
+        }
+        
+        
       </div>
     </div>
   );

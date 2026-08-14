@@ -1,21 +1,23 @@
 import Navbar from "../../components/Navbar/Navbar";
 import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { birdContext } from "../../context/birdContext";
+
 export default function Favorites() {
-  const favorites = JSON.parse(
-    localStorage.getItem("favorites")
-    );
+  const {favorites, setFavorites} = useContext(birdContext)
   
     function handleDelete(birdId) {
       const updatedfavorites = favorites.filter(bird => bird.id !== birdId)
-      localStorage.setItem("favorites", JSON.stringify(updatedfavorites))
+      setFavorites(updatedfavorites)
     }
+
   return (
     <>
     <Navbar/>
     <main className="max-w-6xl mx-auto p-6 space-y-8">
       <h1 className="text-4xl font-bold mb-4">My Favorite Birds</h1>
       {favorites === null ? (
-        <p>You have no favorite birds yet.</p>
+        <p>You have no favorite birds.</p>
       ) : (
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {favorites.map((bird) => (
