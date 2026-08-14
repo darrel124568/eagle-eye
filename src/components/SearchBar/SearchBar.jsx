@@ -8,6 +8,15 @@ export default function SearchBar() {
   const [filter, setFilter] = useState('common_name')
   const {setEndpoint} = useContext(birdContext)
 
+  const custom_filters = [
+    "common_name",
+    "scientific_name",
+    "family",
+    "order",
+    "genus",
+    "species"
+  ]
+
   useEffect(() => {
     inputRef.current.focus();
   }, []);
@@ -21,7 +30,13 @@ export default function SearchBar() {
   const handleClear = () => {
     setTerm('');
   };
+
+  function handleFilterChange(e) {
+    setFilter(e.target.value)
+  }
  return (
+    <>
+    <div className="flex items-center justify-between mb-2">
     <form id="search-form" onSubmit={(e)=>handleSubmit(e)} className="relative w-full">
       <input
         ref={inputRef}
@@ -42,5 +57,17 @@ export default function SearchBar() {
         </button>
       )}
     </form>
+    {
+      <select onChange={(e)=>handleFilterChange(e)} value={filter} className="mb-2 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+        pick a filter
+        {
+          custom_filters.map((f)=> (
+          <option key={f} value={f} className="text-gray-700">{f}</option>))  
+        }
+      </select>
+        
+    }
+    </div>
+    </>
   );
 }

@@ -7,7 +7,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage'
 export default function BirdGrid() {
   const {data, loading, error, retry, setEndpoint} = useContext(birdContext)
   useEffect(()=>{
-    setEndpoint('/api/birds/alpha/z')
+    setEndpoint('/api/birds/category/genus/Aquila ')
   },[])
   
   if (loading) return <div>Loading...</div>
