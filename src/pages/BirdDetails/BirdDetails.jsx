@@ -6,14 +6,14 @@ import { birdContext } from "../../context/birdContext";
 const apiUrl = "https://ornithophile.vercel.app";
 
 const taxonomyFields = [
-  ["Domain", "domain"],
-  ["Kingdom", "kingdom"],
-  ["Phylum", "phylum"],
-  ["Class", "class"],
-  ["Order", "order"],
-  ["Family", "family"],
-  ["Genus", "genus"],
-  ["Species", "species"],
+  "domain",
+  "kingdom",
+  "phylum",
+  "class",
+  "order",
+  "family",
+  "genus",
+  "species",
 ];
 
 export default function BirdDetails() {
@@ -66,9 +66,9 @@ export default function BirdDetails() {
         <section>
           <h2 className="text-2xl font-semibold mb-2">Classification</h2>
           <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {taxonomyFields.map(([label, field]) => data[field] && (
+            {taxonomyFields.map((field) => data[field] && (
               <div key={field} className="rounded-lg bg-gray-100 p-3">
-                <dt className="text-sm text-gray-600">{label}</dt>
+                <dt className="text-sm text-gray-600">{field}</dt>
                 <dd className="font-medium">{data[field]}</dd>
               </div>
             ))}
