@@ -7,6 +7,20 @@ export default function BirdCard({ bird }) {
 
   const fallbackImage = 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80';
 
+  function handleclick() {
+    const favorites = JSON.parse(
+    localStorage.getItem("favorites") || "[]"
+    );
+  if (!favorites.some(fav => fav.id === bird.id)) {
+  favorites.push({id:bird.id, name: bird.common_name});
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+  else {
+    alert("This bird is already in your favorites.");
+  }
+}
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-forest-100 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
       <div className="relative h-48 bg-forest-100 flex items-center justify-center overflow-hidden">
@@ -38,6 +52,7 @@ export default function BirdCard({ bird }) {
           View Details
         </Link>
         <button
+          onClick={handleclick}
           className="mt-4 inline-block text-center w-full py-2 bg-red-800 hover:bg-red-900 text-white text-sm font-semibold rounded-lg transition-colors"
         >
           Add to Favorites
