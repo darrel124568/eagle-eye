@@ -22,8 +22,8 @@ export default function BirdCard({ bird }) {
 }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-forest-100 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-      <div className="relative h-48 bg-forest-100 flex items-center justify-center overflow-hidden">
+    <div className="bg-white rounded-xl shadow-sm border border-green-100 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
+      <div className="relative h-48 bg-green-100 flex items-center justify-center overflow-hidden">
         {!imgError ? (
           <img
             src={bird.male_image || fallbackImage}
