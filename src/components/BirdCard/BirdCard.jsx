@@ -1,15 +1,40 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ImageOff } from 'lucide-react';
+import { birdContext } from '../../context/birdContext';
 
 export default function BirdCard({ bird }) {
   const [imgError, setImgError] = useState(false);
+  const { favorites, setFavorites } = useContext(birdContext);
 
   const fallbackImage = 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80';
 
+function handleClick() {
+  if (!favorites.some(fav => fav.id === bird.id)) {
+    const updatedFavorites = [
+      ...favorites,
+      {
+        id: bird.id,
+        name: bird.common_name
+      }
+    ];
+
+    setFavorites(updatedFavorites);
+
+    localStorage.setItem(
+      "favorites",
+      JSON.stringify(updatedFavorites)
+    );
+
+    alert(`${bird.common_name} has been added to your favorites!`);
+  } else {
+    alert("This bird is already in your favorites.");
+  }
+}
+
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-forest-100 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-      <div className="relative h-48 bg-forest-100 flex items-center justify-center overflow-hidden">
+    <div className="bg-white rounded-xl shadow-sm border border-green-100 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
+      <div className="relative h-48 bg-green-100 flex items-center justify-center overflow-hidden">
         {!imgError ? (
           <img
             src={bird.male_image || fallbackImage}
@@ -37,11 +62,26 @@ export default function BirdCard({ bird }) {
         >
           View Details
         </Link>
-        <button
-          className="mt-4 inline-block text-center w-full py-2 bg-red-800 hover:bg-red-900 text-white text-sm font-semibold rounded-lg transition-colors"
-        >
+        {
+          favorites.some(fav => fav.id === bird.id) ? (
+            <button
+              className="mt-4 inline-block text-center w-full py-2 bg-gray-400 cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-colors"
+              disabled
+            >
+              Already in Favorites
+            </button>
+          ) :(
+            <button
+          onClick={handleClick}
+          className="mt-4 inline-block text-center w-full py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-semibold rounded-lg transition-colors"
+          >
           Add to Favorites
-        </button>
+          </button>
+          )
+          
+        }
+        
+        
       </div>
     </div>
   );

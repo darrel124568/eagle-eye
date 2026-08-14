@@ -16,12 +16,12 @@ export default function SearchBar() {
     setEndpoint(`/api/birds?common_name=${encodeURIComponent(term)}`)
     setTerm('')
   }
-  
+
   const handleClear = () => {
     setTerm('');
   };
  return (
-    <form onSubmit={(e)=>handleSubmit(e)} className="relative w-full">
+    <form id="search-form" onSubmit={(e)=>handleSubmit(e)} className="relative w-full">
       <input
         ref={inputRef}
         type="text"
