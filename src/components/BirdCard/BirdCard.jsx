@@ -12,7 +12,7 @@ export default function BirdCard({ bird }) {
       <div className="relative h-48 bg-forest-100 flex items-center justify-center overflow-hidden">
         {!imgError ? (
           <img
-            src={bird.female_image || fallbackImage}
+            src={bird.male_image || fallbackImage}
             alt={bird.name}
             onError={() => setImgError(true)}
             className="w-full h-full object-cover"

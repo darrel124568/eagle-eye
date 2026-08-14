@@ -1,21 +1,29 @@
-import {useState, useContext} from "react"
+import {useState, useContext, useRef, useEffect} from "react"
 import { birdContext } from "../../context/birdContext"
 import { Search, X } from 'lucide-react';
 
 export default function SearchBar() {
+  const inputRef = useRef(null);
   const [term, setTerm] = useState('')
   const {setEndpoint} = useContext(birdContext)
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   function handleSubmit(e) {
     e.preventDefault()
     setEndpoint(`/api/birds?common_name=${encodeURIComponent(term)}`)
     setTerm('')
   }
+  
   const handleClear = () => {
     setTerm('');
   };
  return (
     <form onSubmit={(e)=>handleSubmit(e)} className="relative w-full">
       <input
+        ref={inputRef}
         type="text"
         value={term}
         onChange={(e) => setTerm(e.target.value)}
