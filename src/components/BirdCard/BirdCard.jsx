@@ -53,7 +53,7 @@ export default function BirdCard({ bird }) {
         </Link>
         <button
           onClick={handleclick}
-          className="mt-4 inline-block text-center w-full py-2 bg-red-800 hover:bg-red-900 text-white text-sm font-semibold rounded-lg transition-colors"
+          className="mt-4 inline-block text-center w-full py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-semibold rounded-lg transition-colors"
         >
           Add to Favorites
         </button>

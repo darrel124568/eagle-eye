@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { birdContext } from "../../context/birdContext";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
-const apiUrl = "https://ornithophile.vercel.app";
+ const fallbackImage = 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80'
 
 const taxonomyFields = [
   "domain",
@@ -41,8 +41,8 @@ export default function BirdDetails() {
   }
 
   const images = [
-    ["Male", data.male_image],
-    ["Female", data.female_image],
+    ["Male", data.male_image || fallbackImage],
+    ["Female", data.female_image || fallbackImage],
     ...(data.other_images || []).map((image) => [image.name || "Bird image", image.source]),
   ].filter(([, source]) => source);
 
