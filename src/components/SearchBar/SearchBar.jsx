@@ -1,10 +1,11 @@
 import {useState, useContext, useRef, useEffect} from "react"
 import { birdContext } from "../../context/birdContext"
-import { Search, X } from 'lucide-react';
+import { FilterX, Search, X } from 'lucide-react';
 
 export default function SearchBar() {
   const inputRef = useRef(null);
   const [term, setTerm] = useState('')
+  const [filter, setFilter] = useState('common_name')
   const {setEndpoint} = useContext(birdContext)
 
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function SearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    setEndpoint(`/api/birds?common_name=${encodeURIComponent(term)}`)
+    setEndpoint(`/api/birds?${filter}=${encodeURIComponent(term)}`)
     setTerm('')
   }
 
