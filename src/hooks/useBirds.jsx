@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 
 export default function useBirds(endpoint) {
@@ -6,28 +6,41 @@ export default function useBirds(endpoint) {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
+    const [retryCount, setRetryCount] = useState(0);
+
+    const retry = useCallback(() => setRetryCount(count => count + 1), []);
+
     useEffect(()=>{
-     if(!endpoint) return;
-     fetch(`${base_url}${endpoint}`)
+     if (!endpoint) {
+        setLoading(false);
+        return;
+     }
+
+     const controller = new AbortController();
+     setLoading(true);
+     setError(null);
+
+     fetch(`${base_url}${endpoint}`, { signal: controller.signal })
      .then(r => {
         if(!r.ok) {
-            throw new Error("error")
+            throw new Error("Unable to load birds. Please try again.")
         }
         return r.json()
      })
-     .then(data => {
-        console.log(data)
-        setData(data)})
+     .then(data => setData(data))
      .catch((err)=>{
-        setError(err)
+        if (err.name !== 'AbortError') {
+            setError(err)
+        }
      })
      .finally(()=>{
-        setLoading(false)
+        if (!controller.signal.aborted) {
+            setLoading(false)
+        }
      })
 
-    }, [endpoint])
+     return () => controller.abort();
+    }, [endpoint, retryCount])
      
-    return {data, loading, error}
+    return {data, loading, error, retry}
 }
-

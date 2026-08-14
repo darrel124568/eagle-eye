@@ -32,11 +32,16 @@ export default function BirdCard({ bird }) {
           <p className="text-sm text-gray-600 line-clamp-2">{bird.description || 'No description available.'}</p>
         </div>
         <Link
-          to={`/birds/${bird.id}`}
+          to={`/bird/${bird.id}`}
           className="mt-4 inline-block text-center w-full py-2 bg-green-800 hover:bg-green-900 text-white text-sm font-semibold rounded-lg transition-colors"
         >
           View Details
         </Link>
+        <button
+          className="mt-4 inline-block text-center w-full py-2 bg-red-800 hover:bg-red-900 text-white text-sm font-semibold rounded-lg transition-colors"
+        >
+          Add to Favorites
+        </button>
       </div>
     </div>
   );
