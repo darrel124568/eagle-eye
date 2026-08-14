@@ -56,6 +56,7 @@ function handleClick() {
               >
                 More about this the {bird.common_name} &rarr;
               </Link>
+              {bird.sound && <section><h2 className="text-2xl font-semibold mb-2">Listen</h2><audio controls src={bird.sound}>Your browser does not support audio playback.</audio></section>}
             </div>
             {favorites.some((fav) => fav.id === bird.id) ? (
           <button
