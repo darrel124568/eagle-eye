@@ -33,56 +33,48 @@ function handleClick() {
 }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-green-100 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-      <div className="relative h-48 bg-green-100 flex items-center justify-center overflow-hidden">
-        {!imgError ? (
-          <img
-            src={bird.male_image || fallbackImage}
-            alt={bird.name}
-            onError={() => setImgError(true)}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        ) : (
-          <div className="flex flex-col items-center justify-center text-forest-500 p-4">
-            <ImageOff className="h-8 w-8 mb-1" />
-            <span className="text-xs">Image unavailable</span>
-          </div>
-        )}
-      </div>
-      <div className="p-4 flex-1 flex flex-col justify-between">
-        <div>
-          <h3 className="font-bold text-lg text-forest-900 line-clamp-1">{bird.common_name}</h3>
-          <p className="text-xs italic text-gray-500 mb-2">{bird.scientific_name || 'Species unknown'}</p>
-          <p className="text-sm text-gray-600 line-clamp-2">{bird.description || 'No description available.'}</p>
-        </div>
-        <Link
-          to={`/bird/${bird.id}`}
-          className="mt-4 inline-block text-center w-full py-2 bg-green-800 hover:bg-green-900 text-white text-sm font-semibold rounded-lg transition-colors"
-        >
-          View Details
-        </Link>
-        {
-          favorites.some(fav => fav.id === bird.id) ? (
-            <button
-              className="mt-4 inline-block text-center w-full py-2 bg-gray-400 cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-colors"
-              disabled
-            >
-              Already in Favorites
-            </button>
-          ) :(
-            <button
-          onClick={handleClick}
-          className="mt-4 inline-block text-center w-full py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-semibold rounded-lg transition-colors"
+
+  <div className="group flex flex-col overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    {
+    <section className="bg-white rounded-2xl border border-green-100 p-6 sm:p-8 shadow-sm">
+          <h2 className="text-xs font-bold text-green-500 uppercase tracking-wider mb-4">{bird.common_name}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div className="h-64 rounded-xl overflow-hidden bg-green-100">
+              <img
+                src={bird.male_image || bird.female_image}
+                alt={bird.common_name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-green-900">{bird.common_name}</h3>
+              <p className="text-sm italic text-gray-500">{bird.scientific_name}</p>
+              <p className="text-sm text-gray-600 line-clamp-3">{bird.description}</p>
+              <Link
+                to={`/bird/${bird.id}`}
+                className="inline-block text-green-800 font-semibold text-sm hover:underline"
+              >
+                More about this the {bird.common_name} &rarr;
+              </Link>
+            </div>
+            {favorites.some((fav) => fav.id === bird.id) ? (
+          <button
+            className="w-50 cursor-not-allowed rounded-xl bg-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-500"
+            disabled
           >
-          Add to Favorites
+            Already in Favorites
           </button>
-          )
-          
+        ) : (
+          <button
+            onClick={handleClick}
+            className="w-50 rounded-xl bg-pink-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+          >
+            Add to Favorites
+          </button>
+        )}
+          </div>
+        </section>
         }
-        
-        
       </div>
-    </div>
   );
 }
