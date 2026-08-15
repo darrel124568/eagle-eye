@@ -18,7 +18,11 @@ export default function Home() {
 
   if (loading) return <Loading/>
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />
-  if (!Array.isArray(data) || data.length === 0) return <p>No bird found.</p>
+  if (!Array.isArray(data) || data.length === 0) {
+
+    return <ErrorMessage message="We couldn't load the page properly, please retry." onRetry={retry} />
+
+  }
   const featuredBird = data[0]
 
   return (

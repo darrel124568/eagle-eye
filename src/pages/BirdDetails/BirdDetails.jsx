@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { birdContext } from "../../context/birdContext";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loading from '../../components/Loading/Loading'
 
  const fallbackImage = 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80'
 
@@ -19,7 +20,7 @@ const taxonomyFields = [
 
 export default function BirdDetails() {
   const { id } = useParams();
-  const {setEndpoint, data, error } = useContext(birdContext)
+  const {setEndpoint, data, error, loading } = useContext(birdContext)
 
   useEffect(() => {
      
@@ -38,6 +39,10 @@ export default function BirdDetails() {
 
   if (!data) {
     return <><Navbar /><main className="p-6">Loading bird details...</main></>;
+  }
+
+  if (loading) {
+    return <><main className="p-6"><Loading/></main></>;
   }
 
   const images = [

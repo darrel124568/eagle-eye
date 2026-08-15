@@ -13,7 +13,7 @@ export default function BirdGrid() {
   
   if (loading) return <Loading/>
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />
-  if (!data || !data[0]) return <div>No birds found</div>
+  if (!data || !data[0]) return <ErrorMessage message="No birds found." onRetry={retry} />  
 
   return (
     data.map(bird => (
