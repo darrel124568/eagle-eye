@@ -2,9 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { birdContext } from "../../context/birdContext";
-import { AddFavorite, RemoveFavorite } from "../../utils/setFavorites";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from '../../components/Loading/Loading'
+import ToggleFavorite from "../../utils/toggleFavorite";
 
  const fallbackImage = 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80'
 
@@ -90,21 +90,7 @@ export default function BirdDetails() {
 
         {data.sound && <section><h2 className="text-2xl font-semibold mb-2">Call</h2><audio controls src={data.sound}>Your browser does not support audio playback.</audio></section>}
         {data.sources && <p><a className="text-green-800 underline" href={data.sources} target="_blank" rel="noreferrer">Learn more about {data.common_name}</a></p>}
-         {favorites.some((fav) => fav.id === id) ? (
-          <button
-            className="w-50 rounded-xl bg-red-600 px-4 py-2.5 text-sm font-semibold text-white"
-            onClick={()=> RemoveFavorite(id, favorites, setFavorites)}
-          >
-            Remove from Favorites
-          </button>
-        ) : (
-          <button
-            onClick={() => AddFavorite(data, favorites, setFavorites)}
-            className="w-50 rounded-xl bg-pink-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
-          >
-            Add to Favorites
-          </button>
-        )}
+         <ToggleFavorite bird={data}/>
       </main>
     </>
   );

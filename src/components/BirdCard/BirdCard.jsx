@@ -2,11 +2,11 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ImageOff } from 'lucide-react';
 import { birdContext } from '../../context/birdContext';
-import {AddFavorite, RemoveFavorite} from '../../utils/setFavorites'
+import ToggleFavorite from '../../utils/toggleFavorite';
 
 export default function BirdCard({ bird }) {
   const [imgError, setImgError] = useState(false);
-  const { favorites, setFavorites } = useContext(birdContext);
+  
 
   const fallbackImage = 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80';
 
@@ -37,21 +37,7 @@ export default function BirdCard({ bird }) {
               </Link>
               {bird.sound && <section><h2 className="text-2xl font-semibold mb-2">Listen</h2><audio controls src={bird.sound}>Your browser does not support audio playback.</audio></section>}
             </div>
-            {favorites.some((fav) => fav.id === bird.id) ? (
-          <button
-            className="w-50 rounded-xl bg-red-600 px-4 py-2.5 text-sm font-semibold text-white"
-            onClick={()=> RemoveFavorite(bird.id, favorites, setFavorites)}
-          >
-            Remove from Favorites
-          </button>
-        ) : (
-          <button
-            onClick={() => AddFavorite(bird, favorites, setFavorites)}
-            className="w-50 rounded-xl bg-pink-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
-          >
-            Add to Favorites
-          </button>
-        )}
+          <ToggleFavorite bird={bird}/>
           </div>
         </section>
         }
