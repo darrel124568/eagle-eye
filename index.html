@@ -2,12 +2,171 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/public/Untitled design.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eagle-eye</title>
+
+    <style>
+      #initial-loader {
+        min-height: 100vh;
+        width: 100%;
+        background: #f7fbff;
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .initial-navbar {
+        height: 56px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        background: white;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .initial-nav-item {
+        height: 24px;
+        width: 96px;
+        border-radius: 6px;
+        background: #e5e7eb;
+      }
+
+      .initial-nav-items {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .initial-avatar {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        background: #e5e7eb;
+      }
+
+      .initial-content {
+        min-height: calc(100vh - 56px);
+        box-sizing: border-box;
+        padding: 24px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .initial-card {
+        width: 320px;
+        box-sizing: border-box;
+        padding: 16px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .initial-image {
+        width: 100%;
+        height: 160px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+        background: #e5e7eb;
+      }
+
+      .initial-line {
+        height: 16px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        background: #e5e7eb;
+      }
+
+      .initial-line.large {
+        width: 75%;
+      }
+
+      .initial-line.small {
+        width: 50%;
+        margin-bottom: 16px;
+      }
+
+      .initial-meta {
+        width: 96px;
+        height: 12px;
+        border-radius: 6px;
+        background: #e5e7eb;
+      }
+
+      .initial-pulse {
+        animation: initial-pulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes initial-pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .initial-content {
+          padding: 16px;
+        }
+
+        .initial-card {
+          width: 100%;
+          max-width: 400px;
+        }
+
+        .initial-navbar {
+          padding: 0 16px;
+        }
+
+        .initial-nav-item {
+          width: 70px;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="initial-loader" class="initial-pulse">
+        <div class="initial-navbar">
+          <div class="initial-nav-item"></div>
+
+          <div class="initial-nav-items">
+            <div class="initial-nav-item"></div>
+            <div class="initial-nav-item"></div>
+            <div class="initial-avatar"></div>
+          </div>
+        </div>
+
+        <div class="initial-content">
+          <div class="initial-card">
+            <div class="initial-image"></div>
+            <div class="initial-line large"></div>
+            <div class="initial-line small"></div>
+            <div class="initial-meta"></div>
+          </div>
+
+          <div class="initial-card">
+            <div class="initial-image"></div>
+            <div class="initial-line large"></div>
+            <div class="initial-line small"></div>
+            <div class="initial-meta"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
