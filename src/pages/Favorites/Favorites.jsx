@@ -2,14 +2,11 @@ import Navbar from "../../components/Navbar/Navbar";
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { birdContext } from "../../context/birdContext";
+import { RemoveFavorite } from "../../utils/setFavorites";
 
 export default function Favorites() {
   const {favorites, setFavorites} = useContext(birdContext)
   
-    function handleDelete(birdId) {
-      const updatedfavorites = favorites.filter(bird => bird.id !== birdId)
-      setFavorites(updatedfavorites)
-    }
 
   return (
     <>
@@ -28,7 +25,7 @@ export default function Favorites() {
           >
           View the {bird.name}
           </Link>
-          <button onClick={() => handleDelete(bird.id)} className="mt-4 inline-block text-center w-full py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition-colors">
+          <button onClick={() => RemoveFavorite(bird.id, favorites, setFavorites)} className="mt-4 inline-block text-center w-full py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition-colors">
           Remove from Favorites</button>
         </div>
           ))}

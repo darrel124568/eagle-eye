@@ -1,5 +1,6 @@
 import Navbar from "../../components/Navbar/Navbar"
 import BirdCard from '../../components/BirdCard/BirdCard'
+import Loading from '../../components/Loading/Loading'
 import { useContext, useEffect } from "react"
 import { birdContext } from "../../context/birdContext"
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
@@ -11,13 +12,17 @@ export default function Home() {
 
   useEffect(() => {
     setEndpoint(
-      `/api/birds?common_name=${encodeURIComponent("Arctic Tern")}`
+      `/api/birds?scientific_name=${encodeURIComponent("Sterna paradisaea")}`
     )
   }, [])
 
-  if (loading) return <p>Loading bird…</p>
+  if (loading) return <Loading/>
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />
-  if (!Array.isArray(data) || data.length === 0) return <p>No bird found.</p>
+  if (!Array.isArray(data) || data.length === 0) {
+
+    return <ErrorMessage message="We couldn't load the page properly, please retry." onRetry={retry} />
+
+  }
   const featuredBird = data[0]
 
   return (
