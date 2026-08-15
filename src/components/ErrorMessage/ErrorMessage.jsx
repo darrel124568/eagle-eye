@@ -8,6 +8,7 @@ export default function ErrorMessage({ message, onRetry }) {
         className="w-full max-w-sm rounded-xl border border-gray-200 bg-white p-6 shadow-lg text-center"
       >
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
+          
           <svg
             className="h-6 w-6 text-red-600"
             fill="none"
@@ -41,6 +42,13 @@ export default function ErrorMessage({ message, onRetry }) {
         >
           Home
         </Link>
+        <button
+          onClick={()=>window.location.reload()}
+          type="button"
+          className=" bg-gray-200 p-3 hover:bg-gray-300 rounded-lg text-sm font-medium text-gray-700 transition-colors"
+        >
+          Reload
+        </button>
         </div>
       </div>
     </div>

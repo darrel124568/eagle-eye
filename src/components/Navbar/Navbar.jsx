@@ -20,7 +20,7 @@ export default function Navbar() {
     }`;
 
   return (
-    <nav className="bg-green-400 text-white sticky top-0 z-50 shadow-md">
+    <nav className="bg-green-400 text-white sticky top-0 z-50 shadow-md h-14 flex items-center justify-between px-4 md:px-6 rounded-b-lg">
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-4">
           {navLinks.map((link) => {
@@ -64,6 +64,9 @@ export default function Navbar() {
           })}
         </div>
       )}
+      <div className="sticky top-0 z-50 left-0 rounded-full bg-gray-200 h-10 w-10 flex items-center justify-center" onClick={() => alert('User features coming soon!')}>
+            <Feather className="h-4 w-4 text-green-400" />
+      </div>
     </nav>
   );
 }
