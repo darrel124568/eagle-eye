@@ -19,7 +19,7 @@ export default function BirdCard({ bird }) {
               <p className="text-sm italic text-gray-500">{bird.scientific_name}</p>
               <p className="text-sm text-gray-600 line-clamp-3">{bird.description}</p>
               <Link
-                to={`/bird/${bird.id}`}
+                to={`/bird/${bird.scientific_name}`}
                 className="inline-block text-sm font-semibold text-blue-700 hover:underline"
               >
                 More about {bird.common_name} &rarr;

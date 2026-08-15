@@ -97,7 +97,7 @@ export default function Home() {
               <p className="text-sm italic text-gray-500">{featuredBird.scientific_name}</p>
               <p className="text-sm text-gray-600 line-clamp-3">{featuredBird.description}</p>
               <Link
-                to={`/bird/${featuredBird.id}`}
+                to={`/bird/${featuredBird.scientific_name}`}
                 className="inline-block text-sm font-semibold text-blue-700 hover:underline"
               >
                 More about the {featuredBird.common_name} &rarr;

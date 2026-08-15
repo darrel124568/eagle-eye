@@ -8,6 +8,7 @@ import LocalRadar from './pages/LocalRadar/LocalRadar'
 import {BirdProvider} from './context/birdContext'
 import {FavoritesProvider} from './context/favoritesContext'
 import {FeaturedBirdProvider} from './context/featuredBirdContext'
+import {DetailedBirdProvider} from './context/detailedBirdContext'
 
 
 export default function App() {
@@ -15,11 +16,12 @@ export default function App() {
     <BirdProvider>
     <FavoritesProvider>
     <FeaturedBirdProvider>
+    <DetailedBirdProvider>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/explore' element={<Explorer/>}/>
-      <Route path='/bird/:id' element={<BirdDetails/>}/>
+      <Route path='/bird/:sciName' element={<BirdDetails/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/favorites' element={<Favourites/>}/>
       <Route path='/notes' element={<h1 className="p-6 text-2xl font-bold text-blue-600">Notes Page - Coming Soon!</h1>}/>
@@ -27,6 +29,7 @@ export default function App() {
       <Route path='*' element={<h1 className="p-6 text-2xl font-bold text-red-600">404 - Page Not Found</h1>}/>
     </Routes>
     </BrowserRouter>
+    </DetailedBirdProvider>
     </FeaturedBirdProvider>
     </FavoritesProvider>
     </BirdProvider>
