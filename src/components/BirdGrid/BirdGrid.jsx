@@ -9,15 +9,16 @@ export default function BirdGrid() {
   const {data, loading, error, retry, setEndpoint} = useContext(birdContext)
   useEffect(()=>{
     setEndpoint('/api/birds/category/genus/Aquila ')
-  },[])
+  },[setEndpoint])
   
   if (loading) return <Loading/>
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />
   if (!data || !data[0]) return <ErrorMessage message="No birds found." onRetry={retry} />  
 
   return (
-    data.map(bird => (
+    <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    {data.map(bird => (
       <BirdCard bird={bird} key={bird.id}/>
-    ))
+    ))}</section>
   )
 }

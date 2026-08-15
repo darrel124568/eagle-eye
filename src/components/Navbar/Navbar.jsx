@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Feather, Menu, X, Heart, Compass, Info, Home } from 'lucide-react';
+import { Feather, Menu, X, Heart, Compass, Info, Home, Book } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,14 +15,19 @@ export default function Navbar() {
   const linkClass = ({ isActive }) =>
     `flex items-center gap-2 px-3 py-2 rounded-md font-medium transition-colors ${
       isActive
-        ? 'bg-green-800 text-white'
-        : 'text-green-100 hover:bg-green-500/20 hover:text-white'
+        ? 'bg-white/16 text-white'
+        : 'text-blue-100 hover:bg-white/10 hover:text-white'
     }`;
 
   return (
-    <nav className="bg-green-400 text-white sticky top-0 z-50 shadow-md h-14 flex items-center justify-between px-4 md:px-6 rounded-b-lg">
+    <nav className="sticky top-0 z-50 h-16 border-b border-white/10 bg-[#082b50]/95 px-4 text-white shadow-lg shadow-blue-950/10 backdrop-blur md:px-8">
+      <div className="mx-auto flex h-full max-w-7xl items-center justify-between">
+        <NavLink to="/" className="hidden items-center gap-2 font-semibold tracking-tight md:flex">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-400 text-[#082b50]"><Feather className="h-4 w-4" /></span>
+          Eagle Eye
+        </NavLink>
         {/* Desktop Navigation */}
-        <div className="hidden md:flex md:items-center md:space-x-4">
+        <div className="hidden md:flex md:items-center md:space-x-2">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
@@ -38,7 +43,7 @@ export default function Navbar() {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-md text-green-100 hover:text-white hover:bg-green-800 focus:outline-none"
+            className="p-2 rounded-md text-blue-100 hover:bg-white/10 hover:text-white focus:outline-none"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -47,8 +52,8 @@ export default function Navbar() {
       
       {/* Mobile Navigation Panel */}
       {isOpen && (
-        <div className="md:hidden px-2 pt-2 pb-3 space-y-1 bg-green-900 border-t border-green-800">
-          {navLinks.map((link) => {
+        <div className="absolute left-0 top-16 z-50 flex w-full flex-col space-y-2 border-b border-white/10 bg-[#082b50] p-4 text-white shadow-lg md:hidden">
+        {navLinks.map((link) => {
             const Icon = link.icon;
             return (
               <NavLink
@@ -64,8 +69,14 @@ export default function Navbar() {
           })}
         </div>
       )}
-      <div className="sticky top-0 z-50 left-0 rounded-full bg-gray-200 h-10 w-10 flex items-center justify-center" onClick={() => alert('User features coming soon!')}>
-            <Feather className="h-4 w-4 text-green-400" />
+      <div className="flex items-center space-x-2">
+      <button type="button" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20" onClick={() => alert('Notes features coming soon!')} aria-label="Notes">
+            <Book className="h-4 w-4 text-sky-200" />
+      </button>
+      <button type="button" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20" onClick={() => alert('User features coming soon!')} aria-label="User profile">
+            <Feather className="h-4 w-4 text-sky-200" />
+      </button>
+      </div>
       </div>
     </nav>
   );

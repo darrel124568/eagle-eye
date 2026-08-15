@@ -1,29 +1,34 @@
 import Navbar from "../../components/Navbar/Navbar";
 
-import React from "react";
+import aboutBird from '../../assets/zdenek-machacek-eqXiLNfZDc0-unsplash.jpg';
 
 function About() {
   return (
     <>
       <Navbar />
-    <div className="min-h-screen bg-gray-50 px-6 py-12">
+    <main className="min-h-screen px-5 py-10 sm:px-8 sm:py-14">
       <div className="mx-auto max-w-4xl">
 
         {/* Header */}
-        <section className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-gray-800">
+        <section className="relative mb-12 overflow-hidden rounded-[2rem] bg-[#082b50] px-6 py-14 text-center text-white shadow-xl shadow-blue-950/10 sm:px-12">
+          <img src={aboutBird} alt="Perched bird" className="absolute inset-0 h-full w-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-[#082b50]/75" />
+          <div className="relative">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[.18em] text-sky-200">About Eagle Eye</p>
+          <h1 className="mb-4 text-4xl font-bold">
             About Bird Explorer 
           </h1>
 
-          <p className="mx-auto max-w-2xl text-lg leading-8 text-gray-600">
+          <p className="mx-auto max-w-2xl text-lg leading-8 text-blue-100">
             Bird Explorer is an interactive website built to make discovering
             and learning about bird species simple, enjoyable, and accessible.
           </p>
+          </div>
         </section>
 
         {/* About the Project */}
-        <section className="mb-10 rounded-xl bg-white p-8 shadow-sm">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-800">
+        <section className="mb-6 rounded-2xl border border-blue-100 bg-white p-8 shadow-sm shadow-blue-950/5">
+          <h2 className="mb-4 text-2xl font-semibold text-[#0b1f3a]">
             Our Goal
           </h2>
 
@@ -36,8 +41,8 @@ function About() {
         </section>
 
         {/* Features */}
-        <section className="mb-10 rounded-xl bg-white p-8 shadow-sm">
-          <h2 className="mb-5 text-2xl font-semibold text-gray-800">
+        <section className="mb-6 rounded-2xl border border-blue-100 bg-white p-8 shadow-sm shadow-blue-950/5">
+          <h2 className="mb-5 text-2xl font-semibold text-[#0b1f3a]">
             What You Can Do
           </h2>
 
@@ -50,8 +55,8 @@ function About() {
         </section>
 
         {/* API Credit */}
-        <section className="rounded-xl bg-white p-8 shadow-sm">
-          <h2 className="mb-4 text-2xl font-semibold text-gray-800">
+        <section className="rounded-2xl border border-blue-100 bg-white p-8 shadow-sm shadow-blue-950/5">
+          <h2 className="mb-4 text-2xl font-semibold text-[#0b1f3a]">
             Data & API
           </h2>
 
@@ -90,10 +95,9 @@ function About() {
         </p>
 
       </div>
-    </div>
+    </main>
     </>
   );
 }
 
 export default About;
-

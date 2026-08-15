@@ -9,7 +9,7 @@ export default function ToggleFavorite({bird}) {
     <div className="mt-4">
     {favorites.some((fav) => fav.id === bird.id) ? (
     <button
-    className="w-50 rounded-xl bg-red-600 px-4 py-2.5 text-sm font-semibold text-white"
+    className="rounded-xl border border-blue-200 bg-white px-4 py-2.5 text-sm font-semibold text-blue-800 transition hover:bg-blue-50"
     onClick={()=> RemoveFavorite(bird.id, favorites, setFavorites)}
     >
     Remove from Favorites
@@ -17,12 +17,11 @@ export default function ToggleFavorite({bird}) {
     ) : (
     <button
     onClick={() => AddFavorite(bird, favorites, setFavorites)}
-    className="w-50 rounded-xl bg-pink-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+    className="rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
     >
     Add to Favorites
     </button>
     )}
-    </div>    
+    </div>
     )
 }
-    
