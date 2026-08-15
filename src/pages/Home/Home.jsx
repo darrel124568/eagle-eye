@@ -17,6 +17,7 @@ export default function Home() {
   }, [setFeaturedEndpoint])
 
   if (loading) return <Loading/>
+  
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />
   if (!Array.isArray(data) || data.length === 0) {
 
