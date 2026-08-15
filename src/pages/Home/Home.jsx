@@ -1,20 +1,20 @@
 import Navbar from "../../components/Navbar/Navbar"
 import Loading from '../../components/Loading/Loading'
 import { useContext, useEffect } from "react"
-import { birdContext } from "../../context/birdContext"
+import { featuredBirdContext } from "../../context/featuredBirdContext"
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import { ArrowRight, Compass, ShieldCheck, Music } from 'lucide-react';
 import { Link} from 'react-router-dom'
 import heroBird from '../../assets/ray-hennessy-TAJHgDh7BY0-unsplash.jpg'
 
 export default function Home() {
-  const { data, loading, error, retry, setEndpoint } = useContext(birdContext)
+  const { data, loading, error, retry, setFeaturedEndpoint } = useContext(featuredBirdContext)
 
   useEffect(() => {
-    setEndpoint(
+    setFeaturedEndpoint(
       `/api/birds?scientific_name=${encodeURIComponent("Sterna paradisaea")}`
     )
-  }, [setEndpoint])
+  }, [setFeaturedEndpoint])
 
   if (loading) return <Loading/>
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />

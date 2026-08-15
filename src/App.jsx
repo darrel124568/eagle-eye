@@ -6,12 +6,14 @@ import Explorer from './pages/Explorer/Explorer'
 import Favourites from './pages/Favorites/Favorites'
 import {BirdProvider} from './context/birdContext'
 import {FavoritesProvider} from './context/favoritesContext'
+import {FeaturedBirdProvider} from './context/featuredBirdContext'
 
 
 export default function App() {
   return (
     <BirdProvider>
     <FavoritesProvider>
+    <FeaturedBirdProvider>
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home/>}/>
@@ -21,6 +23,7 @@ export default function App() {
       <Route path='/favorites' element={<Favourites/>}/>
     </Routes>
     </BrowserRouter>
+    </FeaturedBirdProvider>
     </FavoritesProvider>
     </BirdProvider>
   )
