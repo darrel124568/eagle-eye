@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { birdContext } from "../../context/birdContext";
@@ -21,12 +21,12 @@ const taxonomyFields = [
 
 export default function BirdDetails() {
   const { id } = useParams();
-  const {setEndpoint, data, error, loading, favorites, setFavorites } = useContext(birdContext)
+  const {setEndpoint, data, error, loading } = useContext(birdContext)
 
   useEffect(() => {
      
   setEndpoint(`/api/birds/${id}`)    
-  }, [id]);
+  }, [id, setEndpoint]);
 
   if (error) {
     return (
@@ -55,32 +55,32 @@ export default function BirdDetails() {
   return (
     <>
       <Navbar />
-      <main className="max-w-6xl mx-auto p-6 space-y-8">
+      <main className="mx-auto max-w-7xl space-y-8 px-5 py-10 sm:px-8 sm:py-12">
         <header>
-          <p className="text-sm font-semibold text-green-800">{data.conservation_status}</p>
-          <h1 className="text-4xl font-bold">{data.common_name}</h1>
+          <p className="text-sm font-semibold text-blue-700">{data.conservation_status}</p>
+          <h1 className="text-4xl font-bold tracking-tight text-[#0b1f3a]">{data.common_name}</h1>
           <p className="text-lg italic text-gray-600">{data.scientific_name}</p>
         </header>
 
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Bird images">
           {images.map(([name, source], index) => (
             <figure key={`${source}-${index}`}>
-              <img className="w-full h-64 object-cover rounded-lg" src={source} alt={`${data.common_name} — ${name}`} loading="lazy"/>
+              <img className="h-64 w-full rounded-xl object-cover shadow-sm" src={source} alt={`${data.common_name} — ${name}`} loading="lazy"/>
               <figcaption className="mt-1 text-sm text-gray-600">{name}</figcaption>
             </figure>
           ))}
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-2">About</h2>
-          <p>{data.description}</p>
+          <h2 className="mb-2 text-2xl font-semibold text-[#0b1f3a]">About</h2>
+          <p className="max-w-3xl leading-7 text-slate-700">{data.description}</p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-2">Classification</h2>
+          <h2 className="mb-3 text-2xl font-semibold text-[#0b1f3a]">Classification</h2>
           <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {taxonomyFields.map((field) => data[field] && (
-              <div key={field} className="rounded-lg bg-gray-100 p-3">
+              <div key={field} className="rounded-xl border border-blue-100 bg-white p-4 shadow-sm shadow-blue-950/5">
                 <dt className="text-sm text-gray-600">{field}</dt>
                 <dd className="font-medium">{data[field]}</dd>
               </div>
@@ -89,7 +89,7 @@ export default function BirdDetails() {
         </section>
 
         {data.sound && <section><h2 className="text-2xl font-semibold mb-2">Call</h2><audio controls src={data.sound}>Your browser does not support audio playback.</audio></section>}
-        {data.sources && <p><a className="text-green-800 underline" href={data.sources} target="_blank" rel="noreferrer">Learn more about {data.common_name}</a></p>}
+        {data.sources && <p><a className="font-semibold text-blue-700 underline" href={data.sources} target="_blank" rel="noreferrer">Learn more about {data.common_name}</a></p>}
          <ToggleFavorite bird={data}/>
       </main>
     </>

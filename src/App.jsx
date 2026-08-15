@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
@@ -9,8 +8,6 @@ import {BirdProvider} from './context/birdContext'
 
 
 export default function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <BirdProvider>
       <BrowserRouter>

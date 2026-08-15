@@ -1,6 +1,6 @@
 import {useState, useContext, useRef, useEffect} from "react"
 import { birdContext } from "../../context/birdContext"
-import { FilterX, Search, X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 
 export default function SearchBar() {
   const inputRef = useRef(null);
@@ -36,7 +36,7 @@ export default function SearchBar() {
   }
  return (
     <>
-    <div className="flex items-center justify-between mb-2">
+    <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center">
     <form id="search-form" onSubmit={(e)=>handleSubmit(e)} className="relative w-full">
       <input
         ref={inputRef}
@@ -44,7 +44,7 @@ export default function SearchBar() {
         value={term}
         onChange={(e) => setTerm(e.target.value)}
         placeholder="Search by common or scientific name..."
-        className="w-full pl-10 pr-10 py-3 bg-white border border-forest-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-forest-500 text-forest-900 placeholder-gray-400 shadow-sm"
+        className="w-full rounded-xl border border-blue-200 bg-white py-3 pl-10 pr-10 text-[#0b1f3a] shadow-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100 placeholder:text-slate-400"
       />
       <Search className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" onClick={(e)=> handleSubmit(e)}/>
       {term && (
@@ -58,8 +58,8 @@ export default function SearchBar() {
       )}
     </form>
     {
-      <select onChange={(e)=>handleFilterChange(e)} value={filter} className="mb-2 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-        <option value="" className="text-green-700">Search by...</option>
+      <select onChange={(e)=>handleFilterChange(e)} value={filter} className="rounded-xl border border-blue-200 bg-white p-3 text-sm font-medium text-[#0b1f3a] shadow-sm outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100">
+        <option value="" className="text-blue-700">Search by...</option>
         {
           custom_filters.map((f)=> (
           <option key={f} value={f} className="text-gray-700">{f}</option>))  
