@@ -59,7 +59,7 @@ export default function SearchBar() {
     </form>
     {
       <select onChange={(e)=>handleFilterChange(e)} value={filter} className="mb-2 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-        pick a filter
+        <option value="" className="text-green-700">Search by...</option>
         {
           custom_filters.map((f)=> (
           <option key={f} value={f} className="text-gray-700">{f}</option>))  
