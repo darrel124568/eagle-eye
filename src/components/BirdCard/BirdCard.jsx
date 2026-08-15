@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ImageOff } from 'lucide-react';
 import { birdContext } from '../../context/birdContext';
+import {AddFavorite, RemoveFavorite} from '../../utils/setFavorites'
 
 export default function BirdCard({ bird }) {
   const [imgError, setImgError] = useState(false);
@@ -9,28 +10,6 @@ export default function BirdCard({ bird }) {
 
   const fallbackImage = 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80';
 
-function handleClick() {
-  if (!favorites.some(fav => fav.id === bird.id)) {
-    const updatedFavorites = [
-      ...favorites,
-      {
-        id: bird.id,
-        name: bird.common_name
-      }
-    ];
-
-    setFavorites(updatedFavorites);
-
-    localStorage.setItem(
-      "favorites",
-      JSON.stringify(updatedFavorites)
-    );
-
-    alert(`${bird.common_name} has been added to your favorites!`);
-  } else {
-    alert("This bird is already in your favorites.");
-  }
-}
 
   return (
 
@@ -60,14 +39,14 @@ function handleClick() {
             </div>
             {favorites.some((fav) => fav.id === bird.id) ? (
           <button
-            className="w-50 cursor-not-allowed rounded-xl bg-gray-200 px-4 py-2.5 text-sm font-semibold text-gray-500"
-            disabled
+            className="w-50 rounded-xl bg-red-600 px-4 py-2.5 text-sm font-semibold text-white"
+            onClick={()=> RemoveFavorite(bird.id, favorites, setFavorites)}
           >
-            Already in Favorites
+            Remove from Favorites
           </button>
         ) : (
           <button
-            onClick={handleClick}
+            onClick={() => AddFavorite(bird, favorites, setFavorites)}
             className="w-50 rounded-xl bg-pink-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
           >
             Add to Favorites

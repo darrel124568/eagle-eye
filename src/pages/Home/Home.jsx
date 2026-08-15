@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     setEndpoint(
-      `/api/birds?common_name=${encodeURIComponent("Arctic Tern")}`
+      `/api/birds?scientific_name=${encodeURIComponent("Sterna paradisaea")}`
     )
   }, [])
 
