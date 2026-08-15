@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 
-export default function useBirds(endpoint) {
-    const base_url = `https://ornithophile.vercel.app`
+export default function useBirds(endpoint, base_url = 'https://ornithophile.vercel.app', options = {}) {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -20,7 +19,7 @@ export default function useBirds(endpoint) {
      setLoading(true);
      setError(null);
 
-     fetch(`${base_url}${endpoint}`, { signal: controller.signal })
+     fetch(`${base_url}${endpoint}`, { signal: controller.signal, ...options })
      .then(r => {
         if(!r.ok) {
             throw new Error("Unable to load birds. Please try again.")
