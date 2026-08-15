@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Feather, Menu, X, Heart, Compass, Info, Home, Book } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Feather, Menu, X, Heart, Compass, Info, Home, Radar, Book } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,8 @@ export default function Navbar() {
     { to: '/', label: 'Home', icon: Home },
     { to: '/explore', label: 'Explore', icon: Compass },
     { to: '/favorites', label: 'Favorites', icon: Heart },
-    { to: '/about', label: 'About', icon: Info },
+    { to: '/notes', label: 'Notes', icon: Book },
+    { to: '/about', label: 'About', icon: Info }    
   ];
 
   const linkClass = ({ isActive }) =>
@@ -70,9 +72,9 @@ export default function Navbar() {
         </div>
       )}
       <div className="flex items-center space-x-2">
-      <button type="button" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20" onClick={() => alert('Notes features coming soon!')} aria-label="Notes">
-            <Book className="h-4 w-4 text-sky-200" />
-      </button>
+      <Link to="/local-radar" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20" aria-label="Local Radar">
+            <Radar className="h-4 w-4 text-sky-200" />
+      </Link>
       <button type="button" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20" onClick={() => alert('User features coming soon!')} aria-label="User profile">
             <Feather className="h-4 w-4 text-sky-200" />
       </button>

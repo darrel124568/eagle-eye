@@ -17,7 +17,7 @@ export default function Home() {
   }, [setFeaturedEndpoint])
 
   if (loading) return <Loading/>
-  
+
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />
   if (!Array.isArray(data) || data.length === 0) {
 
@@ -41,14 +41,24 @@ export default function Home() {
           <p className="text-blue-100 text-base sm:text-lg">
             Explore species taxonomy, vocalizations, distribution, and environmental status across global ecosystems.
           </p>
-          <Link
+          <div className="flex flex-wrap gap-4">
+             <Link
             to="/explore"
             className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-[#0e4f8f] shadow-md transition hover:bg-sky-50"
           >
             <span>Explore Birds</span>
             <ArrowRight className="h-5 w-5" />
           </Link>
+          <Link
+            to="/local-radar"
+            className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-[#0e4f8f] shadow-md transition hover:bg-sky-50"
+          >
+            <span>Local bird Radar</span>
+            <ArrowRight className="h-5 w-5" />
+          </Link>
         </div>
+          </div>
+         
       </section>
 
       {/* Feature Highlights */}
