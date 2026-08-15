@@ -5,12 +5,14 @@ import BirdDetails from './pages/BirdDetails/BirdDetails'
 import Explorer from './pages/Explorer/Explorer'
 import Favourites from './pages/Favorites/Favorites'
 import {BirdProvider} from './context/birdContext'
+import {FavoritesProvider} from './context/favoritesContext'
 
 
 export default function App() {
   return (
     <BirdProvider>
-      <BrowserRouter>
+    <FavoritesProvider>
+    <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/explore' element={<Explorer/>}/>
@@ -19,6 +21,7 @@ export default function App() {
       <Route path='/favorites' element={<Favourites/>}/>
     </Routes>
     </BrowserRouter>
+    </FavoritesProvider>
     </BirdProvider>
   )
 }

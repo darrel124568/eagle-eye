@@ -1,11 +1,11 @@
 import Navbar from "../../components/Navbar/Navbar";
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
-import { birdContext } from "../../context/birdContext";
+import { favoritesContext } from "../../context/favoritesContext";
 import { RemoveFavorite } from "../../utils/setFavorites";
 
 export default function Favorites() {
-  const {favorites, setFavorites} = useContext(birdContext)
+  const {favorites, setFavorites} = useContext(favoritesContext)
   
 
   return (

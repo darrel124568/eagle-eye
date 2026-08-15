@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { birdContext } from '../context/birdContext';
+import { favoritesContext } from '../context/favoritesContext';
 import { AddFavorite, RemoveFavorite } from './setFavorites';
  
 export default function ToggleFavorite({bird}) {
 
-    const { favorites, setFavorites } = useContext(birdContext);
+    const { favorites, setFavorites } = useContext(favoritesContext);
     return (
     <div className="mt-4">
     {favorites.some((fav) => fav.id === bird.id) ? (
