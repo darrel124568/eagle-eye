@@ -20,7 +20,7 @@ export default function Navbar() {
     }`;
 
   return (
-    <nav className="bg-green-200 text-white sticky top-0 z-50 shadow-md">
+    <nav className="bg-green-400 text-white sticky top-0 z-50 shadow-md">
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-4">
           {navLinks.map((link) => {

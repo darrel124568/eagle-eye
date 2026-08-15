@@ -82,7 +82,7 @@ export default function Home() {
                 to={`/bird/${featuredBird.id}`}
                 className="inline-block text-green-800 font-semibold text-sm hover:underline"
               >
-                More about this bird &rarr;
+                More about the {featuredBird.common_name} &rarr;
               </Link>
             </div>
           </div>
