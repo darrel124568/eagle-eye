@@ -32,7 +32,7 @@ export default function Home() {
     <main className="mx-auto max-w-7xl space-y-14 px-5 py-8 sm:px-8 sm:py-12">
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-[2rem] bg-[#082b50] p-8 text-white shadow-xl shadow-blue-950/15 sm:p-12 lg:p-16">
-        <img src={heroBird} alt="Bird in flight" className="absolute inset-0 h-full w-full object-cover opacity-70" />
+        <img src={heroBird} alt="Bird in flight" className="absolute inset-0 h-full w-full object-cover opacity-70" loading="lazy"/>
         <div className="absolute inset-0 bg-gradient-to-r from-[#082b50] via-[#0c3d70]/90 to-[#0c3d70]/35" />
         <div className="max-w-2xl space-y-6 relative z-10">
           <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
@@ -90,6 +90,7 @@ export default function Home() {
                 src={featuredBird.male_image || featuredBird.female_image}
                 alt={featuredBird.common_name}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div className="space-y-4">

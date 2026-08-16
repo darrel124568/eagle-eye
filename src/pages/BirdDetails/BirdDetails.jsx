@@ -67,7 +67,7 @@ export default function BirdDetails() {
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Bird images">
           {images.map(([name, source], index) => (
             <figure key={`${source}-${index}`}>
-              <img className="h-64 w-full rounded-xl object-cover shadow-sm" src={source} alt={`${bird.common_name} — ${name}`} loading="lazy"/>
+              <img className="h-64 w-full rounded-xl object-cover shadow-sm" src={source} alt={`${bird.common_name} — ${name}`}/>
               <figcaption className="mt-1 text-sm text-gray-600">{name}</figcaption>
             </figure>
           ))}

@@ -54,6 +54,7 @@ export default function LocalRadar() {
           <p className="rounded-2xl border border-dashed border-blue-200 bg-white p-8 text-slate-600">
             Retrieving your location...
           </p>
+          <Loading/>
         </main>
       </>
     );
@@ -91,8 +92,8 @@ export default function LocalRadar() {
           {data.map((bird) => (
             <li key={bird.speciesCode} className="flex flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white p-5 shadow-sm shadow-blue-950/5">
               <h2 className="text-lg font-semibold text-[#0b1f3a]">{bird.comName}</h2>
-              <p className="text-sm text-gray-600">{bird.sciName}</p>
-              <p className="mt-2 text-sm text-gray-600">Observed on: {new Date(bird.obsDt).toLocaleDateString()}</p>
+              <p className="text-sm text-gray-600">Scientific Name: {bird.sciName}</p>
+              <p className="mt-2 text-sm text-gray-600">{bird.howMany} observed on {new Date(bird.obsDt).toLocaleDateString()}</p>
               <Link
                 to={`/bird/${encodeURIComponent(bird.sciName)}`}
                 className="mt-4 inline-block w-full rounded-xl bg-blue-700 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-800"
