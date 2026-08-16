@@ -12,6 +12,7 @@ export default function BirdCard({ bird }) {
                 src={bird.male_image || bird.female_image || 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=600&q=80'}
                 alt={bird.common_name}
                 className="w-full h-full object-cover"
+                loading='Lazy'
               />
             </div>
             <div className="space-y-4">
