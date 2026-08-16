@@ -11,7 +11,6 @@ export default function useBirds(endpoint, base_url = 'https://ornithophile.verc
 
     useEffect(()=>{
      if (!endpoint) {
-        setLoading(false);
         return;
      }
 

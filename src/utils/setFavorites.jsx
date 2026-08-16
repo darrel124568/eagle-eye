@@ -1,10 +1,10 @@
 
 export function AddFavorite(bird, favorites, setFavorites) {
-  if (!favorites.some(fav => fav.id === bird.id)) {
+  if (!favorites.some(fav => fav.scientific_name === bird.scientific_name)) {
     const updatedFavorites = [
       ...favorites,
       {
-        id: bird.id,
+        scientific_name: bird.scientific_name,
         name: bird.common_name
       }
     ];
@@ -20,8 +20,8 @@ export function AddFavorite(bird, favorites, setFavorites) {
   }
 }
 
-export function RemoveFavorite(birdId, favorites, setFavorites) {
-  const updatedFavorites = favorites.filter(bird => bird.id !== birdId);
+export function RemoveFavorite(birdSciName, favorites, setFavorites) {
+  const updatedFavorites = favorites.filter(bird => bird.scientific_name !== birdSciName);
   setFavorites(updatedFavorites);
   
   localStorage.setItem(

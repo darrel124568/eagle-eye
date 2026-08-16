@@ -36,7 +36,7 @@ export default function SearchBar() {
   }
  return (
     <>
-    <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <div className="mb-4 mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
     <form id="search-form" onSubmit={(e)=>handleSubmit(e)} className="relative w-full">
       <input
         ref={inputRef}

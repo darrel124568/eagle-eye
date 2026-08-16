@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import useBirds from '../../hooks/useBirds';
 
 
@@ -83,6 +84,7 @@ export default function LocalRadar() {
   return (
     <>
       <Navbar />
+      <SearchBar />
       <main className="mx-auto max-w-7xl space-y-8 px-5 py-10 sm:px-8 sm:py-12">
         <div>
           <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-blue-600">Local Radar</p>
