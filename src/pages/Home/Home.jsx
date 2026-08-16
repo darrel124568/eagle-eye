@@ -17,7 +17,7 @@ export default function Home() {
   }, [setFeaturedEndpoint])
 
   if (loading) return <Loading/>
-  
+
   if (error) return <ErrorMessage message={error.message} onRetry={retry} />
   if (!Array.isArray(data) || data.length === 0) {
 
@@ -32,7 +32,7 @@ export default function Home() {
     <main className="mx-auto max-w-7xl space-y-14 px-5 py-8 sm:px-8 sm:py-12">
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-[2rem] bg-[#082b50] p-8 text-white shadow-xl shadow-blue-950/15 sm:p-12 lg:p-16">
-        <img src={heroBird} alt="Bird in flight" className="absolute inset-0 h-full w-full object-cover opacity-70" />
+        <img src={heroBird} alt="Bird in flight" className="absolute inset-0 h-full w-full object-cover opacity-70" loading="lazy"/>
         <div className="absolute inset-0 bg-gradient-to-r from-[#082b50] via-[#0c3d70]/90 to-[#0c3d70]/35" />
         <div className="max-w-2xl space-y-6 relative z-10">
           <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
@@ -41,14 +41,24 @@ export default function Home() {
           <p className="text-blue-100 text-base sm:text-lg">
             Explore species taxonomy, vocalizations, distribution, and environmental status across global ecosystems.
           </p>
-          <Link
+          <div className="flex flex-wrap gap-4">
+             <Link
             to="/explore"
             className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-[#0e4f8f] shadow-md transition hover:bg-sky-50"
           >
             <span>Explore Birds</span>
             <ArrowRight className="h-5 w-5" />
           </Link>
+          <Link
+            to="/local-radar"
+            className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-[#0e4f8f] shadow-md transition hover:bg-sky-50"
+          >
+            <span>Local bird Radar</span>
+            <ArrowRight className="h-5 w-5" />
+          </Link>
         </div>
+          </div>
+         
       </section>
 
       {/* Feature Highlights */}
@@ -80,6 +90,7 @@ export default function Home() {
                 src={featuredBird.male_image || featuredBird.female_image}
                 alt={featuredBird.common_name}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <div className="space-y-4">
@@ -87,7 +98,7 @@ export default function Home() {
               <p className="text-sm italic text-gray-500">{featuredBird.scientific_name}</p>
               <p className="text-sm text-gray-600 line-clamp-3">{featuredBird.description}</p>
               <Link
-                to={`/bird/${featuredBird.id}`}
+                to={`/bird/${featuredBird.scientific_name}`}
                 className="inline-block text-sm font-semibold text-blue-700 hover:underline"
               >
                 More about the {featuredBird.common_name} &rarr;

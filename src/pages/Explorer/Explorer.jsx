@@ -11,7 +11,7 @@ export default function Explorer() {
         <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-blue-600">Bird directory</p>
         <h1 className="text-3xl font-bold tracking-tight text-[#0b1f3a] sm:text-4xl">Find your next sighting.</h1>
       </header>
-      <SearchBar />
+      <SearchBar />  
       <BirdGrid />
     </main>
     </>

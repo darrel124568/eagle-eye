@@ -7,10 +7,10 @@ export default function ToggleFavorite({bird}) {
     const { favorites, setFavorites } = useContext(favoritesContext);
     return (
     <div className="mt-4">
-    {favorites.some((fav) => fav.id === bird.id) ? (
+    {favorites.some((fav) => fav.scientific_name === bird.scientific_name) ? (
     <button
     className="rounded-xl border border-blue-200 bg-white px-4 py-2.5 text-sm font-semibold text-blue-800 transition hover:bg-blue-50"
-    onClick={()=> RemoveFavorite(bird.id, favorites, setFavorites)}
+    onClick={()=> RemoveFavorite(bird.scientific_name, favorites, setFavorites)}
     >
     Remove from Favorites
     </button>

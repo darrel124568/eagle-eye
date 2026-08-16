@@ -11,7 +11,7 @@ function About() {
 
         {/* Header */}
         <section className="relative mb-12 overflow-hidden rounded-[2rem] bg-[#082b50] px-6 py-14 text-center text-white shadow-xl shadow-blue-950/10 sm:px-12">
-          <img src={aboutBird} alt="Perched bird" className="absolute inset-0 h-full w-full object-cover opacity-70" />
+          <img src={aboutBird} alt="Perched bird" className="absolute inset-0 h-full w-full object-cover opacity-70" loading="lazy"/>
           <div className="absolute inset-0 bg-[#082b50]/75" />
           <div className="relative">
           <p className="mb-3 text-xs font-bold uppercase tracking-[.18em] text-sky-200">About Eagle Eye</p>
@@ -88,12 +88,6 @@ function About() {
             provided by the API.
           </p>
         </section>
-
-        {/* Footer */}
-        <p className="mt-10 text-center text-sm text-gray-500">
-          Built with React and a love for birds 
-        </p>
-
       </div>
     </main>
     </>
