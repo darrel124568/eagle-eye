@@ -5,7 +5,7 @@ import { featuredBirdContext } from "../../context/featuredBirdContext"
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import { ArrowRight, Compass, ShieldCheck, Music } from 'lucide-react';
 import { Link} from 'react-router-dom'
-import heroBird from '../../assets/ray-hennessy-TAJHgDh7BY0-unsplash.jpg'
+import heroBird from '../../assets/a.webp'
 
 export default function Home() {
   const { data, loading, error, retry, setFeaturedEndpoint } = useContext(featuredBirdContext)
